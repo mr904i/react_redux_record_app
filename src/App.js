@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import { Route} from 'react-router-dom';
+import TodoList from './containers/TodoList';
+import Login from './containers/Login';
+import {ConnectedRouter} from 'connected-react-router';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  render(){
+    return(
+      <ConnectedRouter history={this.props.history}>
+          <Route path="/" component={Login} exact={true} />
+          <Route path="/todos" component={TodoList} />
+      </ConnectedRouter>  
+    );
+  }
 }
+
+// const PrivateRoute = ({component: Component, ...rest}) => {
+//   debugger;
+//   const token = rest.token;
+//   return(
+//     <Route
+//      {...rest}
+//      render = {(props) => token !== null
+//       ?<Component {...props} />
+//       :<Redirect to = {{pathname: '/'}}/>}
+//     />
+//   )
+// }
+
+// const mapStateToProps = (state) => {
+//   return{
+//     token: state.auth.token
+//   }
+// }
 
 export default App;
