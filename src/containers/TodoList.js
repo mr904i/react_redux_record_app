@@ -25,7 +25,8 @@ class TodoList extends Component {
                             return(
                                 <div>
                                     <h1>{todo.title}</h1>
-                                    <p>{todo.body}</p>
+                                    <p>{todo.article}</p>
+                                    <p>{todo.created_at}</p>
                                 </div>
                             )
                         })
