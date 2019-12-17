@@ -3,7 +3,7 @@ import {push} from 'connected-react-router'
 export function login(email, password){
     return dispatch => {
         dispatch({type: "LOGIN_START"});
-        fetch('http://localhost:8000/api/token-auth/', {
+        fetch('http://localhost:8000/api/signin/', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(
