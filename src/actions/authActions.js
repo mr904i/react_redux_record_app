@@ -19,10 +19,10 @@ export function login(email, password){
                 const token = data.token;
                 const user = data.user;
                 //localstrageにtokenを保存
-                // localStorage.setItem('token', token);
+                localStorage.setItem('token', token);
                 //dispatchはreducerにactionオブジェクトにdispatchないの情報を格納して渡す
                 dispatch({type: "LOGIN_SUCCESS", token: token, user: user});
-                dispatch(push('/todos'));
+                dispatch(push('/blog'));
             } else {
                 alert(data.message);
                 dispatch({type: "LOGIN_ERROR", error: data.message})
@@ -34,6 +34,6 @@ export function login(email, password){
     }
 }
 export function logout(){
-    // localStorage.removeItem('token');
+    localStorage.removeItem('token');
     return {type: "LOGOUT"};
 }
