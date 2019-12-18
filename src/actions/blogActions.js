@@ -53,11 +53,11 @@ export function ariticle_create(title, article, user){
                 dispatch(push('/blog'));
             } else {
                 alert(data.message);
-                dispatch({type: "ARTICLE_POST_ERROR", error: data.message})
+                dispatch({type: "FETCH_ARTICLE_ERROR", error: data.message})
             }
         })
         .catch((err) => {
-            dispatch({type: "ARTICLE_POST_ERROR", errpr: err});
+            dispatch({type: "FETCH_ARTICLE_ERROR", errpr: err});
         })
     }
 }

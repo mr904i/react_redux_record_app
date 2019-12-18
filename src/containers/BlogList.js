@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchTodo} from '../actions/blogActions';
+import {fetchArticle} from '../actions/blogActions';
 import {logout} from '../actions/authActions';
+import { Link } from 'react-router-dom';
 
 class BlogList extends Component {
     componentDidMount(){
-        this.props.fetchTodo(this.props.token);
+        this.props.fetchArticle(this.props.token);
     }
 
     clickLogout(){
@@ -18,6 +19,7 @@ class BlogList extends Component {
             <div>
                 <div>Hello {this.props.user.username}</div>
                 <button onClick={this.clickLogout.bind(this)}>Logout</button>
+                <Link to="/blog_new">新規作成</Link>
                 <br />
                 <ul>
                     {
@@ -48,7 +50,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return{
-        fetchTodo: (token) => dispatch(fetchTodo(token)),
+        fetchArticle: (token) => dispatch(fetchArticle(token)),
         logout: () => dispatch(logout())
     }
 }
