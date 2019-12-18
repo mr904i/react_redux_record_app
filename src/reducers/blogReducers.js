@@ -1,12 +1,12 @@
 const initState = {
     fetching: false,
     fetched: false,
-    todos: [],
+    articles: [],
     error: null,
     token: null,
 }
 
-const todoReducer = (state = initState, action) => {
+const blogReducer = (state = initState, action) => {
     switch(action.type){
         //get
         case "FETCH_TODO_START":
@@ -19,7 +19,7 @@ const todoReducer = (state = initState, action) => {
                 ...state,
                 fetching: false,
                 fetched: true,
-                todos: action.todos
+                articles: action.articles
             };
         case "FETCH_TODO_ERROR":
             return{
@@ -32,4 +32,4 @@ const todoReducer = (state = initState, action) => {
     }
 }
 
-export default todoReducer;
+export default blogReducer;

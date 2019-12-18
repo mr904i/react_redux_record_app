@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchTodo} from '../actions/todoActions';
+import {fetchTodo} from '../actions/blogActions';
 import {logout} from '../actions/authActions';
 
-class TodoList extends Component {
+class BlogList extends Component {
     componentDidMount(){
         this.props.fetchTodo(this.props.token);
     }
@@ -21,12 +21,12 @@ class TodoList extends Component {
                 <br />
                 <ul>
                     {
-                        this.props.todos.map((todo) => {
+                        this.props.articles.map((article) => {
                             return(
                                 <div>
-                                    <h1>{todo.title}</h1>
-                                    <p>{todo.article}</p>
-                                    <p>{todo.created_at}</p>
+                                    <h1>{article.title}</h1>
+                                    <p>{article.article}</p>
+                                    <p>{article.created_at}</p>
                                 </div>
                             )
                         })
@@ -42,7 +42,7 @@ const mapStateToProps = (state) => {
     return{
         user: state.auth.user,
         token: state.auth.token,
-        todos: state.todo.todos,
+        articles: state.article.articles,
     }
 }
 
@@ -53,4 +53,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList)
+export default connect(mapStateToProps, mapDispatchToProps)(BlogList)
