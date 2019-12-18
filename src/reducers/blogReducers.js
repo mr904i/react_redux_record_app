@@ -9,24 +9,24 @@ const initState = {
 const blogReducer = (state = initState, action) => {
     switch(action.type){
         //get
-        case "FETCH_TODO_START":
+        case "FETCH_ARTICLE_START":
             return{
                 ...state,
                 fetching: true
             };
-        case "FETCH_TODO_SUCCESS":
+        case "FETCH_ARTICLE_SUCCESS":
             return{
                 ...state,
                 fetching: false,
                 fetched: true,
                 articles: action.articles
             };
-        case "FETCH_TODO_ERROR":
+        case "FETCH_ARTICLE_ERROR":
             return{
                 ...state,
                 fetching: false,
                 error: action.error
-            };      
+            };
         default:
             return state;
     }
