@@ -29,6 +29,7 @@ class BlogList extends Component {
                                     <h1>{article.title}</h1>
                                     <p>{article.article}</p>
                                     <p>{article.created_at}</p>
+                                    {this.props.user.id === article.user && <p>編集</p>}
                                 </div>
                             )
                         })
