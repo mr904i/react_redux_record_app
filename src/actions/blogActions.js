@@ -12,7 +12,7 @@ export function fetchTodo(token){
         .then((res) => res.json())
         .then((data) => {
             if(data){
-                dispatch({type: "FETCH_TODO_SUCCESS", todos: data})
+                dispatch({type: "FETCH_TODO_SUCCESS", articles: data})
             } else {
                 alert(data.message);
                 dispatch({type: "FETCH_TODO_ERROR", error: data.message})
