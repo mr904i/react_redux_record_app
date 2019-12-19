@@ -61,3 +61,44 @@ export function ariticle_create(title, article, user){
         })
     }
 }
+
+export function articleDelete(article_id){
+    return dispatch => {
+        dispatch({type: "FETCH_ARTICLE_START"});
+        const token = localStorage.token;
+        fetch(`http://localhost:8000/api/blog/${article_id}/`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${token}`
+            }
+        })
+        // .then((res) => res.json())
+        .then(() => {
+            //削除したらもう一度記事一覧をgetする
+            fetch('http://localhost:8000/api/blog/', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${token}`
+            }
+            })
+            .then((res) => res.json())
+            .then((data) => {
+                if(data){
+                    dispatch({type: "FETCH_ARTICLE_SUCCESS", articles: data})
+                } else {
+                    alert(data.message);
+                    dispatch({type: "FETCH_ARTICLE_ERROR", error: data.message})
+                }
+            })
+            .catch((err) => {
+                dispatch({type: "FETCH_ARTICLE_ERROR", error: err});
+            })
+                dispatch(push('/blog'));
+        })
+        .catch((err) => {
+            dispatch({type: "FETCH_ARTICLE_ERROR", error: err});
+        })
+    }
+}
