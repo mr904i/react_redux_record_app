@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {fetchArticle} from '../actions/blogActions';
 import {logout} from '../actions/authActions';
 import { Link } from 'react-router-dom';
+import DeleteModalWindow from './DeleteModalMenu'
 
 class BlogList extends Component {
     componentDidMount(){
@@ -29,7 +30,7 @@ class BlogList extends Component {
                                     <h1>{article.title}</h1>
                                     <p>{article.article}</p>
                                     <p>{article.created_at}</p>
-                                    {this.props.user.id === article.user && <p>編集</p>}
+                                    {this.props.user.id === article.user && <DeleteModalWindow article_id={article.id}/>}
                                 </div>
                             )
                         })
