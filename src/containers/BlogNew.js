@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import { connect } from 'react-redux';
 
-import {ariticle_create} from '../actions/blogActions'
+import {article_create} from '../actions/blogActions'
 
 class BlogNew extends Component {
     constructor(props){
@@ -22,7 +22,7 @@ class BlogNew extends Component {
     }
 
     clickPost(){
-        this.props.ariticle_create(this.state.title, this.state.article, this.props.user);
+        this.props.article_create(this.state.title, this.state.article, this.props.user);
     }
 
     render(){
@@ -59,7 +59,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        ariticle_create: (title, article, user) => dispatch(ariticle_create(title, article, user))
+        article_create: (title, article, user) => dispatch(article_create(title, article, user))
     }
 }
 
