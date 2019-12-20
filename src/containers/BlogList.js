@@ -4,6 +4,7 @@ import {fetchArticle} from '../actions/blogActions';
 import {logout} from '../actions/authActions';
 import { Link } from 'react-router-dom';
 import DeleteModalWindow from './DeleteModalMenu'
+import BlogUpdate from './BlogUpdate'
 
 class BlogList extends Component {
     componentDidMount(){
@@ -31,6 +32,17 @@ class BlogList extends Component {
                                     <p>{article.article}</p>
                                     <p>{article.created_at}</p>
                                     {this.props.user.id === article.user && <DeleteModalWindow article_id={article.id}/>}
+                                    {this.props.user.id === article.user && 
+                                        <Link to={{
+                                            pathname: "/blog_update",
+                                            state: {
+                                                article_id: article.id,
+                                                article_title: article.title,
+                                                article_article: article.article
+                                            }
+                                        }}>
+                                            UPDATE
+                                        </Link>}
                                 </div>
                             )
                         })
