@@ -24,7 +24,7 @@ export function fetchArticle(token){
     }
 }
 
-export function ariticle_create(title, article, user){
+export function article_create(title, article, user){
     return dispatch => {
         dispatch({type: "ARTICLE_POST_START"});
         //localstrage からtokenを取得する
@@ -50,6 +50,46 @@ export function ariticle_create(title, article, user){
         .then((res) => res.json())
         .then((data) => {
             if(data){
+                dispatch(push('/blog'));
+            } else {
+                alert(data.message);
+                dispatch({type: "FETCH_ARTICLE_ERROR", error: data.message})
+            }
+        })
+        .catch((err) => {
+            dispatch({type: "FETCH_ARTICLE_ERROR", errpr: err});
+        })
+    }
+}
+
+export function article_update(id, title, article, user){
+    return dispatch => {
+        dispatch({type: "ARTICLE_POST_START"});
+        //localstrage からtokenを取得する
+        const token = localStorage.token;
+        //現在のユーザー情報idを取得
+        const user_id = user.id
+
+        fetch(`http://localhost:8000/api/blog/${id}/`, {
+    
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${token}`
+            },
+            body: JSON.stringify(
+                {
+                    id: id,
+                    title: title,
+                    article: article,
+                    user: user_id,
+                }
+            )
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            if(data){
+                //ここでget処理=>storeを取得し直す
                 dispatch(push('/blog'));
             } else {
                 alert(data.message);
