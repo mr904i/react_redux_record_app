@@ -4,24 +4,17 @@ import {fetchArticle} from '../actions/blogActions';
 import {logout} from '../actions/authActions';
 import { Link } from 'react-router-dom';
 import DeleteModalWindow from './DeleteModalMenu'
-import BlogUpdate from './BlogUpdate'
+import Header from './Header'
 
 class BlogList extends Component {
     componentDidMount(){
         this.props.fetchArticle(this.props.token);
     }
 
-    clickLogout(){
-        this.props.logout();
-        this.props.history.push('/');
-    }
-
     render() {
         return(
             <div>
-                <div>Hello {this.props.user.username}</div>
-                <button onClick={this.clickLogout.bind(this)}>Logout</button>
-                <Link to="/blog_new">新規作成</Link>
+                <Header/>
                 <br />
                 <ul>
                     {
@@ -65,7 +58,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return{
         fetchArticle: (token) => dispatch(fetchArticle(token)),
-        logout: () => dispatch(logout())
     }
 }
 
