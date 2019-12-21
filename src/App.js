@@ -3,6 +3,7 @@ import { Route} from 'react-router-dom';
 import BlogList from './containers/BlogList';
 import BlogNew from './containers/BlogNew';
 import BlogUpdate from './containers/BlogUpdate';
+import SignUp from './containers/SignUp';
 import Login from './containers/Login';
 import TopPage from './components/TopPage';
 import {ConnectedRouter} from 'connected-react-router';
@@ -13,6 +14,7 @@ class App extends Component {
     return(
       <ConnectedRouter history={this.props.history}>
           <Route path="/" component={TopPage} exact={true} />
+          <Route path="/signup" component={SignUp} />
           <Route path="/login" component={Login} />
           <Route path="/blog" component={BlogList} />
           <Route path="/blog_new" component={BlogNew} />
