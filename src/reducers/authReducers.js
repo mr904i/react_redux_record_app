@@ -7,6 +7,26 @@ const initState = {
 
 const authReducer = (state = initState, action) =>{
     switch(action.type){
+        //signup
+        case "SIGNUP_START":
+            return{
+                ...state,
+                proccesssing: true
+            };
+        case "SIGNUP_SUCCESS":
+            return{
+                ...state,
+                proccesssing: false,
+                token: action.token,
+                user: action.user,
+            };
+        case "SIGNUP_ERROR":
+            return{
+                ...state,
+                proccesssing: false,
+                error: action.error
+            };
+        //login
         case "LOGIN_START":
             return{
                 ...state,
