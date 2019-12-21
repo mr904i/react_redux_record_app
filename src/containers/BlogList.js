@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {fetchArticle} from '../actions/blogActions';
-import {logout} from '../actions/authActions';
 import { Link } from 'react-router-dom';
 import DeleteModalWindow from './DeleteModalMenu'
 import Header from './Header'

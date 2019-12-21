@@ -8,7 +8,6 @@ const initState = {
 
 const blogReducer = (state = initState, action) => {
     switch(action.type){
-        //get
         case "FETCH_ARTICLE_START":
             return{
                 ...state,
