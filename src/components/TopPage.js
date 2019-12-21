@@ -8,7 +8,7 @@ class TopPage extends Component {
         return(
             <div>
                 <h1>TopPage</h1>
-                <Link to="/login" className="this_is_class_name">SignUp</Link>
+                <Link to="/signup" className="this_is_class_name">SignUp</Link>
                 <br/>
                 <Link to="/login" className="this_is_class_name">Login</Link>
             </div>
