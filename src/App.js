@@ -3,6 +3,7 @@ import { Route} from 'react-router-dom';
 import BlogList from './containers/BlogList';
 import BlogNew from './containers/BlogNew';
 import BlogUpdate from './containers/BlogUpdate';
+import BlogShow from './containers/BlogShow';
 import SignUp from './containers/SignUp';
 import Login from './containers/Login';
 import TopPage from './components/TopPage';
@@ -19,6 +20,7 @@ class App extends Component {
           <Route path="/blog" component={BlogList} />
           <Route path="/blog_new" component={BlogNew} />
           <Route path="/blog_update" component={BlogUpdate} />
+          <Route path="/blog_show" component={BlogShow} />
       </ConnectedRouter>  
     );
   }

@@ -23,6 +23,18 @@ class BlogList extends Component {
                                     <h1>{article.title}</h1>
                                     <p>{article.article}</p>
                                     <p>{article.created_at}</p>
+                                    <Link to={{
+                                            pathname: "/blog_show",
+                                            state: {
+                                                article_id: article.id,
+                                                article_title: article.title,
+                                                article_article: article.article,
+                                                article_user: article.user,
+                                                article_created_at: article.created_at
+                                            }
+                                        }}>
+                                            SHOW
+                                    </Link>
                                     {this.props.user.id === article.user && <DeleteModalWindow article_id={article.id}/>}
                                     {this.props.user.id === article.user && 
                                         <Link to={{
