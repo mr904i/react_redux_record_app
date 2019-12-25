@@ -6,7 +6,6 @@ import {article_update} from '../actions/blogActions'
 
 class BlogUpdate extends Component {
     constructor(props){
-        debugger
         super(props);
         this.state = {
             id: this.props.location.state.article_id,

@@ -8,7 +8,6 @@ import Header from './Header'
 class BlogShow extends Component {
     //詳細画面をクリックしてpropsで記事情報を受け取る
     constructor(props){
-        debugger
         super(props);
         this.state = {
             id: this.props.location.state.article_id,
