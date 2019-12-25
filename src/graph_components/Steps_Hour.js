@@ -3,17 +3,24 @@ import { ComposedChart , CartesianGrid, Legend,Tooltip, Bar, XAxis, YAxis } from
 import {connect} from 'react-redux';
 import {getHourSteps} from '../actions/graphActions';
 import Header from '../containers/Header'
+import GraphCalendarModal from './GraphCalendarModal'
 
 class Steps_Hour extends Component {
     constructor(props){
         super(props);
         this.state = {
             graphtype: 'hour_steps',
-            date: new Date().toLocaleDateString()
+            date: new Date()
         }
     }
     componentDidMount(){
-        const date = this.state.date
+        const date = this.state.date.toLocaleDateString()
+        this.props.getHourSteps(this.props.token, date);
+    }
+    //カレンダーから日にち受け取り,action作動
+    onSelectDate = (date) =>{
+        this.setState({date:date})
+        date = date.toLocaleDateString()
         this.props.getHourSteps(this.props.token, date);
     }
     render() {
@@ -83,6 +90,7 @@ class Steps_Hour extends Component {
                     fill="#ff0000" ////レーダーの中身の色を指定
                 /> */}
             </ComposedChart>
+            <GraphCalendarModal onSelectDate={this.onSelectDate} date = {this.state.date} />
         </div>
       )
     }
