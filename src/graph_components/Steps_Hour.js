@@ -1,40 +1,46 @@
 import React, {Component} from 'react';
 import { ComposedChart , CartesianGrid, Legend,Tooltip, Bar, XAxis, YAxis } from 'recharts'
-
+import {connect} from 'react-redux';
+import {getHourSteps} from '../actions/graphActions';
 
 class Steps_Hour extends Component {
+    componentDidMount(){
+        const date = '20191209'
+        this.props.getHourSteps(this.props.token, date);
+    }
     render() {
+        const data = this.props.hour_steps
         //actionで歩数のみ取得して歩数を割り振る
-        const data = [
-            {'hour': ''},
-            {'hour': '0', 'steps': 680},
-            {'hour': '1', 'steps': 800},
-            {'hour': '2', 'steps': 967},
-            {'hour': '3', 'steps': 1098},
-            {'hour': '4', 'steps': 1200},
-            {'hour': '5', 'steps': 1108},
-            {'hour': '6', 'steps': 680},
-            {'hour': '7', 'steps': 680},
-            {'hour': '8', 'steps': 680},
-            {'hour': '9', 'steps': 680},
-            {'hour': '10', 'steps': 680},
-            {'hour': '11', 'steps': 680},
-            {'hour': '12', 'steps': 680},
-            {'hour': '13', 'steps': 680},
-            {'hour': '14', 'steps': 680},
-            {'hour': '15', 'steps': 680},
-            {'hour': '16', 'steps': 680},
-            {'hour': '17', 'steps': 680},
-            {'hour': '18', 'steps': 680},
-            {'hour': '19', 'steps': 680},
-            {'hour': '20', 'steps': 680},
-            {'hour': '21', 'steps': 680},
-            {'hour': '22', 'steps': 680},
-            {'hour': '23', 'steps': 680},
+        // const data = [
+        //     {'hour': ''},
+        //     {'hour': '0', 'steps': 680},
+        //     {'hour': '1', 'steps': 800},
+        //     {'hour': '2', 'steps': 967},
+        //     {'hour': '3', 'steps': 1098},
+        //     {'hour': '4', 'steps': 1200},
+        //     {'hour': '5', 'steps': 1108},
+        //     {'hour': '6', 'steps': 680},
+        //     {'hour': '7', 'steps': 680},
+        //     {'hour': '8', 'steps': 680},
+        //     {'hour': '9', 'steps': 680},
+        //     {'hour': '10', 'steps': 680},
+        //     {'hour': '11', 'steps': 680},
+        //     {'hour': '12', 'steps': 680},
+        //     {'hour': '13', 'steps': 680},
+        //     {'hour': '14', 'steps': 680},
+        //     {'hour': '15', 'steps': 680},
+        //     {'hour': '16', 'steps': 680},
+        //     {'hour': '17', 'steps': 680},
+        //     {'hour': '18', 'steps': 680},
+        //     {'hour': '19', 'steps': 680},
+        //     {'hour': '20', 'steps': 680},
+        //     {'hour': '21', 'steps': 680},
+        //     {'hour': '22', 'steps': 680},
+        //     {'hour': '23', 'steps': 680},
             
 
-            // {hour: 'next hour', '予測': 1200}
-        ];
+        //     // {hour: 'next hour', '予測': 1200}
+        // ];
       return (
         <div className="Chart">
             <h1>YOUR STEPS IN A DAY</h1>
@@ -73,4 +79,17 @@ class Steps_Hour extends Component {
     }
   }
 
-export default Steps_Hour;
+//storeから取り出し
+const mapStateToProps = (state) => {
+    return{
+        token: state.auth.token,
+        hour_steps: state.graph.hour_steps_data
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    return{
+        getHourSteps: (token, date) => dispatch(getHourSteps(token, date)),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Steps_Hour)
