@@ -2,10 +2,18 @@ import React, {Component} from 'react';
 import { ComposedChart , CartesianGrid, Legend,Tooltip, Bar, XAxis, YAxis } from 'recharts'
 import {connect} from 'react-redux';
 import {getHourSteps} from '../actions/graphActions';
+import Header from '../containers/Header'
 
 class Steps_Hour extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            graphtype: 'hour_steps',
+            date: new Date().toLocaleDateString()
+        }
+    }
     componentDidMount(){
-        const date = '20191209'
+        const date = this.state.date
         this.props.getHourSteps(this.props.token, date);
     }
     render() {
@@ -43,6 +51,7 @@ class Steps_Hour extends Component {
         // ];
       return (
         <div className="Chart">
+            <Header/>
             <h1>YOUR STEPS IN A DAY</h1>
             <ComposedChart //グラフ全体のサイズや位置、データを指定。場合によってmarginで上下左右の位置を指定する必要あり。
                 width={800}  //グラフ全体の幅を指定 x
