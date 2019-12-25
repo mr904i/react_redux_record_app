@@ -22,10 +22,12 @@ class BlogList extends Component {
     render() {
         return(
             <div>
-                <div>Hello {this.props.user.username}</div>
+                {/* <div>Hello {this.props.user.username}</div> */}
                 <Link to="/blog">TOP</Link>
                 <button onClick={this.clickLogout.bind(this)}>Logout</button>
                 <Link to="/blog_new">NEW ARTICLE</Link>
+                <br />
+                <Link to="/test">TEDT GRAPH</Link>
                 <br />
             </div>
         );
