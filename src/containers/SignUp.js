@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 import {signup} from '../actions/authActions'
 
+import BirthDayCalendarModal from './BirthDayCalendarModal';
+
 class Signup extends Component {
     constructor(props){
         super(props);
@@ -25,8 +27,8 @@ class Signup extends Component {
         this.setState({username: e.target.value})
     }
 
-    handleDateOfBirthInput(e){
-        this.setState({date_of_birth: e.target.value})
+    selectDateOfBirth = (date_of_birth) => {
+        this.setState({date_of_birth: date_of_birth.toLocaleDateString().replace(/\//g, '-')})
     }
 
     handleHeightInput(e){
@@ -65,10 +67,8 @@ class Signup extends Component {
                 </div>
                 <div>
                     <label>Your Birth Day</label>
-                    <input value={this.state.date_of_birth}
-                        onChange= {this.handleDateOfBirthInput.bind(this)}
-                        placeholder="Your Birth Day"
-                    />
+                    < BirthDayCalendarModal selectDateOfBirth={this.selectDateOfBirth} date_of_birth = {this.state.date_of_birth}/>
+                    <p>{this.state.date_of_birth&& this.state.date_of_birth}</p>
                 </div>
                 <div>
                     <label>Height</label>
