@@ -1,8 +1,10 @@
 import {push} from 'connected-react-router'
+import endpoint from '../endpoint'
+
 export function fetchArticle(token){
     return dispatch => {
         dispatch({type: "FETCH_ARTICLE_START"});
-        fetch('http://localhost:8000/api/blog/', {
+        fetch(`${endpoint}blog/`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -32,7 +34,7 @@ export function article_create(title, article, user){
         //現在のユーザー情報idを取得
         const user_id = user.id
 
-        fetch('http://localhost:8000/api/blog/', {
+        fetch(`${endpoint}blog/`, {
     
             method: 'POST',
             headers: {
@@ -70,7 +72,7 @@ export function article_update(id, title, article, user){
         //現在のユーザー情報idを取得
         const user_id = user.id
 
-        fetch(`http://localhost:8000/api/blog/${id}/`, {
+        fetch(`${endpoint}blog/${id}/`, {
     
             method: 'PUT',
             headers: {
@@ -106,7 +108,7 @@ export function articleDelete(article_id){
     return dispatch => {
         dispatch({type: "FETCH_ARTICLE_START"});
         const token = localStorage.token;
-        fetch(`http://localhost:8000/api/blog/${article_id}/`, {
+        fetch(`${endpoint}blog/${article_id}/`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -116,7 +118,7 @@ export function articleDelete(article_id){
         // .then((res) => res.json())
         .then(() => {
             //削除したらもう一度記事一覧をgetする
-            fetch('http://localhost:8000/api/blog/', {
+            fetch(`${endpoint}blog/`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

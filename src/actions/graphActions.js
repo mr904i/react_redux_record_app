@@ -1,7 +1,8 @@
+import endpoint from '../endpoint'
 export function getHourSteps(token,date){
     return dispatch => {
         dispatch({type: "FETCH_GRAPH_START"});
-        fetch(`http://localhost:8000/api/fitbit/hoursteps/filter/?id=&hour_steps=&time=&string_date=${date}`, {
+        fetch(`${endpoint}fitbit/hoursteps/filter/?id=&hour_steps=&time=&string_date=${date}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
