@@ -11,6 +11,10 @@ phases:
   post_build:
     commands:
       - tar cf /tmp/node_modules.tar node_modules
+  phases:
+    install:
+      runtime-versions:
+        nodejs: 10
 artifacts:
   files:
     - '**/*'
