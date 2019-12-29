@@ -1,9 +1,9 @@
 import {push} from 'connected-react-router'
-
+import endpoint from '../endpoint'
 export function signup(email, username, date_of_birth, height, weight, password){
     return dispatch => {
         dispatch({type: "SIGNUP_START"});
-        fetch('http://localhost:8000/api/signup/', {
+        fetch(`${endpoint}signup/`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(
@@ -49,7 +49,7 @@ export function signup(email, username, date_of_birth, height, weight, password)
 export function login(email, password){
     return dispatch => {
         dispatch({type: "LOGIN_START"});
-        fetch('http://localhost:8000/api/signin/', {
+        fetch(`${endpoint}signin/`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(
