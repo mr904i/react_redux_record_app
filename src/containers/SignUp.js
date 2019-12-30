@@ -28,7 +28,7 @@ class Signup extends Component {
     }
 
     selectDateOfBirth = (date_of_birth) => {
-        this.setState({date_of_birth: date_of_birth.toLocaleDateString().replace(/\//g, '-')})
+        this.setState({date_of_birth: date_of_birth})
     }
 
     handleHeightInput(e){
@@ -44,7 +44,7 @@ class Signup extends Component {
     }
 
     clickSignUp(){
-        this.props.signup(this.state.email, this.state.username, this.state.date_of_birth, this.state.height, this.state.weight, this.state.password);
+        this.props.signup(this.state.email, this.state.username, this.state.date_of_birth.toLocaleDateString().replace(/\//g, '-'), this.state.height, this.state.weight, this.state.password);
     }
 
     render(){
@@ -68,7 +68,7 @@ class Signup extends Component {
                 <div>
                     <label>Your Birth Day</label>
                     < BirthDayCalendarModal selectDateOfBirth={this.selectDateOfBirth} date_of_birth = {this.state.date_of_birth}/>
-                    <p>{this.state.date_of_birth&& this.state.date_of_birth}</p>
+                    <p>{this.state.date_of_birth&& this.state.date_of_birth.toLocaleDateString()}</p>
                 </div>
                 <div>
                     <label>Height</label>
