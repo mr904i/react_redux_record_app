@@ -1,16 +1,17 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
-
+import {ButtonToolbar, Button} from 'react-bootstrap'
+import '../style/toppage.scss'
 
 class TopPage extends Component {
     
     render(){
         return(
-            <div>
-                <h1>TopPage</h1>
-                <Link to="/signup" className="this_is_class_name">SignUp</Link>
-                <br/>
-                <Link to="/login" className="this_is_class_name">Login</Link>
+            <div className="menu-main">
+                <h1>WELCOM</h1>
+                <ButtonToolbar className="menu-main__Toolbar">
+                    <Button variant="danger" href="/signup" className="menu-main__Toolbar-button__left">SignUp</Button>
+                    <Button variant="primary" href="/signin" className="menu-main__Toolbar-button__right">SignIn</Button>
+                </ButtonToolbar>
             </div>
         )
     }
