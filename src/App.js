@@ -17,7 +17,7 @@ class App extends Component {
       <ConnectedRouter history={this.props.history}>
           <Route path="/" component={TopPage} exact={true} />
           <Route path="/signup" component={SignUp} />
-          <Route path="/login" component={Login} />
+          <Route path="/signin" component={Login} />
           <Route path="/blog" component={BlogList} />
           <Route path="/blog_new" component={BlogNew} />
           <Route path="/blog_update" component={BlogUpdate} />
