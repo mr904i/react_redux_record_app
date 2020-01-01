@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-
 import { connect } from 'react-redux';
-
-import {login} from '../actions/authActions'
+import {login} from '../actions/authActions';
+import {Form, Button} from 'react-bootstrap';
+import Header from './Header'
+import '../style/signin.scss'
 
 class Login extends Component {
     constructor(props){
@@ -28,22 +29,35 @@ class Login extends Component {
     render(){
         return(
             <div>
-                <h3>Login</h3>
-                <div>
-                    <label>Email</label>
-                    <input value={this.state.email}
-                        onChange= {this.handleEmailInput.bind(this)}
-                        placeholder="Email"
-                    />
+                <Header/>
+                <div className="signin-container">
+                    <h3>SignIn</h3>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control 
+                            type="email" 
+                            placeholder="Enter email" 
+                            value={this.state.email}
+                            onChange= {this.handleEmailInput.bind(this)}
+                        />
+                    </Form.Group>
+
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control 
+                            type="password"
+                            placeholder="Password"
+                            value={this.state.password}
+                            onChange= {this.handlePasswordInput.bind(this)}
+                        />
+                    </Form.Group>
+                    <Button
+                        variant="primary"
+                        onClick={this.clickLogin.bind(this)}
+                    >
+                        SignIn
+                    </Button>
                 </div>
-                <div>
-                    <label>Password</label>
-                    <input value={this.state.password}
-                        onChange= {this.handlePasswordInput.bind(this)}
-                        placeholder="Password"
-                    />
-                </div>
-                <button onClick={this.clickLogin.bind(this)}>Login</button>
             </div>
         )
     }
