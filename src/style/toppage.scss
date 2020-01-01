@@ -1,0 +1,16 @@
+.menu-main{
+    padding-top:60px;
+    width: 80%;
+    margin: 0 auto;
+    max-width: 500px;
+    text-align: center;
+    &__Toolbar{
+        margin-top: 50px;
+        &-button__left{
+            margin-left: 70px;
+        }
+        &-button__right{
+            margin-left: 210px;
+        }
+    }
+}

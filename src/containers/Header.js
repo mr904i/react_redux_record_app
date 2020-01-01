@@ -4,6 +4,7 @@ import {logout} from '../actions/authActions';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router'
 import PropTypes from 'prop-types'
+import {Nav, Navbar} from 'react-bootstrap'
 
 
 class BlogList extends Component {
@@ -22,13 +23,15 @@ class BlogList extends Component {
     render() {
         return(
             <div>
-                {/* <div>Hello {this.props.user.username}</div> */}
-                <Link to="/blog">TOP</Link>
-                <button onClick={this.clickLogout.bind(this)}>Logout</button>
-                <Link to="/blog_new">NEW ARTICLE</Link>
-                <br />
-                <Link to="/test">TEDT GRAPH</Link>
-                <br />
+                <Navbar bg="dark" variant="dark">
+                    <Nav className="mr-auto">
+                        {this.props.user.token === null && <Nav.Link href="/">Top</Nav.Link>}
+                        {this.props.user.token && <Nav.Link href="/blog">List</Nav.Link>}
+                        {this.props.user.token && <Nav.Link href="/blog_new">New Article</Nav.Link>}
+                        {this.props.user.token && <Nav.Link href="/test">Show Graph</Nav.Link>}
+                        {this.props.user.token && <Nav.Link onClick={this.clickLogout.bind(this)}>Sign Out</Nav.Link>}
+                    </Nav>
+                </Navbar>
             </div>
         );
     }
@@ -37,7 +40,7 @@ class BlogList extends Component {
 //storeから取り出し
 const mapStateToProps = (state) => {
     return{
-        user: state.auth.user,
+        user: state.auth,
     }
 }
 
