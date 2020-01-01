@@ -8,6 +8,7 @@ import { routerMiddleware } from 'connected-react-router';
 import rootReducer from './reducers';
 import thunk from "redux-thunk"
 import {Provider} from 'react-redux'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const history=createBrowserHistory();
 const store = createStore(
