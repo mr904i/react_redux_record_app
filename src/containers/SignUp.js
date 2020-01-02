@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-
 import { connect } from 'react-redux';
-
-import {signup} from '../actions/authActions'
-
+import {signup} from '../actions/authActions';
 import BirthDayCalendarModal from './BirthDayCalendarModal';
+import '../style/signup.scss';
+import Header from './Header';
 
 class Signup extends Component {
     constructor(props){
@@ -50,6 +49,7 @@ class Signup extends Component {
     render(){
         return(
             <div>
+                <Header/>
                 <h3>Signup</h3>
                 <div>
                     <label>Email</label>
