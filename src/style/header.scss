@@ -1,0 +1,13 @@
+.header{
+    // position: fixed;
+    width: 100%;
+    &-navbar{
+        &-nav{
+            &-navlink{
+                &__tag{
+                    color: rgba(255,255,255,.5);
+                }
+            }
+        }
+    }
+}

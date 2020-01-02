@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router'
 import PropTypes from 'prop-types'
 import {Nav, Navbar} from 'react-bootstrap'
+import '../style/header.scss'
 
 
 class BlogList extends Component {
@@ -22,14 +23,40 @@ class BlogList extends Component {
 
     render() {
         return(
-            <div>
-                <Navbar bg="dark" variant="dark">
-                    <Nav className="mr-auto">
-                        {this.props.user.token === null && <Nav.Link href="/">Top</Nav.Link>}
-                        {this.props.user.token && <Nav.Link href="/blog">List</Nav.Link>}
-                        {this.props.user.token && <Nav.Link href="/blog_new">New Article</Nav.Link>}
-                        {this.props.user.token && <Nav.Link href="/test">Show Graph</Nav.Link>}
-                        {this.props.user.token && <Nav.Link onClick={this.clickLogout.bind(this)}>Sign Out</Nav.Link>}
+            <div className="header">
+                <Navbar bg="dark" variant="dark" className="header-navbar">
+                    <Nav className="mr-auto header-navbar-nav">
+                        {this.props.user.token === null && 
+                            <Nav.Link className="mr-auto header-navbar-nav-navlink" href="/">
+                                Top
+                            </Nav.Link>
+                        }
+                        {this.props.user.token && 
+                            <Nav.Link className="mr-auto header-navbar-nav-navlink">
+                                <Link to ="/blog" className="header-navbar-nav-navlink__tag">
+                                    List
+                                </Link>
+                            </Nav.Link>
+                        }
+                        {this.props.user.token && 
+                            <Nav.Link className="mr-auto header-navbar-nav-navlink">
+                                <Link to='/blog_new' className="header-navbar-nav-navlink__tag">
+                                    New Article
+                                </Link>
+                            </Nav.Link>
+                        }
+                        {this.props.user.token && 
+                            <Nav.Link className="mr-auto header-navbar-nav-navlink">
+                                <Link to = '/test' className="header-navbar-nav-navlink__tag">
+                                    Show Graph
+                                </Link>
+                            </Nav.Link>
+                        }
+                        {this.props.user.token && 
+                            <Nav.Link className="mr-auto header-navbar-nav-navlink" onClick={this.clickLogout.bind(this)}>
+                                Sign Out
+                            </Nav.Link>
+                        }
                     </Nav>
                 </Navbar>
             </div>
