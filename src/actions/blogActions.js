@@ -14,7 +14,9 @@ export function fetchArticle(token){
         .then((res) => res.json())
         .then((data) => {
             if(data){
-                dispatch({type: "FETCH_ARTICLE_SUCCESS", articles: data})
+                //data配列は逆順でreducerに渡す
+                const reverseData = data.reverse()
+                dispatch({type: "FETCH_ARTICLE_SUCCESS", articles: reverseData})
             } else {
                 alert(data.message);
                 dispatch({type: "FETCH_ARTICLE_ERROR", error: data.message})
