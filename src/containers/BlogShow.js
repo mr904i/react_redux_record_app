@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {fetchArticle} from '../actions/blogActions';
+import {Jumbotron, Button, ButtonToolbar} from 'react-bootstrap'
 import { Link } from 'react-router-dom';
-import DeleteModalWindow from './DeleteModalMenu'
+import DeleteModalWindow from './DeleteModalMenu';
 import Header from './Header'
 
 class BlogShow extends Component {
@@ -18,27 +19,45 @@ class BlogShow extends Component {
         }
     }
     render() {
+        const btnstyle = {
+            marginRight: "20px"
+        };
+        const linkstyle = {
+            color: "white",
+            textDecoration: "none",
+        }
         return(
             <div>
                 <Header/>
                 <br />
-                <div>
-                    <h1>{this.state.title}</h1>
-                    <p>{this.state.article}</p>
-                    <p>{this.state.created_at}</p>
-                </div>
-                {this.props.user.id === this.state.article_user && <DeleteModalWindow article_id={this.state.id}/>}
-                {this.props.user.id === this.state.article_user && 
-                    <Link to={{
-                        pathname: "/blog_update",
-                        state: {
-                            article_id: this.state.id,
-                            article_title: this.state.title,
-                            article_article: this.state.article
+                <Jumbotron>
+                    <div>
+                        <h1>{this.state.title}</h1>
+                        <p>{this.state.article}</p>
+                        <p>{this.state.created_at}</p>
+                    </div>
+                    <ButtonToolbar>
+                        {this.props.user.id === this.state.article_user && 
+                            <DeleteModalWindow article_id={this.state.id}/>
                         }
-                    }}>
-                        UPDATE
-                    </Link>}
+                        {this.props.user.id === this.state.article_user &&
+                            <Button variant="info" style={btnstyle}>
+                                <Link to={{
+                                    pathname: "/blog_update",
+                                    state: {
+                                        article_id: this.state.id,
+                                        article_title: this.state.title,
+                                        article_article: this.state.article
+                                    }
+                                }}
+                                style={linkstyle}
+                                >
+                                    UPDATE
+                                </Link>
+                            </Button>
+                        }
+                    </ButtonToolbar>
+                </Jumbotron>
             </div>
         );
     }
