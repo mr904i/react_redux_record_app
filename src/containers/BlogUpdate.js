@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-
 import { connect } from 'react-redux';
-
-import {article_update} from '../actions/blogActions'
+import {article_update} from '../actions/blogActions';
+import Header from './Header'
 
 class BlogUpdate extends Component {
     constructor(props){
@@ -29,6 +28,7 @@ class BlogUpdate extends Component {
     render(){
         return(
             <div>
+                <Header/>
                 <h3>記事投稿</h3>
                 
                 <div>
