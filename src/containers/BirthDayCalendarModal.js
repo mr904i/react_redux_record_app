@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import BirthDayCalendar from './BirthDayCalendar'
+import {Button} from 'react-bootstrap'
 const customStyles = {
   content : {
     top                   : '50%',
@@ -35,7 +36,7 @@ class BirthDayCalendarModal extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.openModal}>SELECT YOUR BIRTHDAY</button>
+        <Button variant="secondary" onClick={this.openModal} style={{fontSize: "12px"}}>SELECT YOUR BIRTHDAY</Button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
