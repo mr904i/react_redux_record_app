@@ -4,6 +4,7 @@ import {signup} from '../actions/authActions';
 import BirthDayCalendarModal from './BirthDayCalendarModal';
 import '../style/signup.scss';
 import Header from './Header';
+import {Form, Button} from 'react-bootstrap';
 
 class Signup extends Component {
     constructor(props){
@@ -50,48 +51,66 @@ class Signup extends Component {
         return(
             <div>
                 <Header/>
-                <h3>Signup</h3>
-                <div>
-                    <label>Email</label>
-                    <input value={this.state.email}
-                        onChange= {this.handleEmailInput.bind(this)}
-                        placeholder="Email"
-                    />
+                <div className="signin-container">
+                    <h3>Sign Up</h3>
+                    <Form.Group controlId="Email">
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control 
+                            type="email" 
+                            placeholder="email" 
+                            value={this.state.email}
+                            onChange= {this.handleEmailInput.bind(this)}
+                        />
+                    </Form.Group>
+
+                    <Form.Group controlId="UserName">
+                        <Form.Label>User Name</Form.Label>
+                        <Form.Control 
+                            type="username" 
+                            placeholder="username" 
+                            value={this.state.username}
+                            onChange= {this.handleUsernameInput.bind(this)}
+                        />
+                    </Form.Group>
+                    <div>
+                        <label>Your Birth Day</label>
+                        <p>{this.state.date_of_birth&& this.state.date_of_birth.toLocaleDateString()}</p>
+                        < BirthDayCalendarModal selectDateOfBirth={this.selectDateOfBirth} date_of_birth = {this.state.date_of_birth}/>
+                    </div>
+                    <Form.Group controlId="Height">
+                        <Form.Label>Height</Form.Label>
+                        <Form.Control 
+                            type="height" 
+                            placeholder="height you can only input number" 
+                            value={this.state.height}
+                            onChange= {this.handleHeightInput.bind(this)}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="Weight">
+                        <Form.Label>Weight</Form.Label>
+                        <Form.Control 
+                            type="weight" 
+                            placeholder="weight you can only input number" 
+                            value={this.state.weight}
+                            onChange= {this.handleWeightInput.bind(this)}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="Password">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control 
+                            type="password"
+                            placeholder="Password"
+                            value={this.state.password}
+                            onChange= {this.handlePasswordInput.bind(this)}
+                        />
+                    </Form.Group>
+                    <Button
+                        variant="primary"
+                        onClick={this.clickSignUp.bind(this)}
+                    >
+                        SignUp
+                    </Button>
                 </div>
-                <div>
-                    <label>UserName</label>
-                    <input value={this.state.username}
-                        onChange= {this.handleUsernameInput.bind(this)}
-                        placeholder="UserName"
-                    />
-                </div>
-                <div>
-                    <label>Your Birth Day</label>
-                    < BirthDayCalendarModal selectDateOfBirth={this.selectDateOfBirth} date_of_birth = {this.state.date_of_birth}/>
-                    <p>{this.state.date_of_birth&& this.state.date_of_birth.toLocaleDateString()}</p>
-                </div>
-                <div>
-                    <label>Height</label>
-                    <input value={this.state.height}
-                        onChange= {this.handleHeightInput.bind(this)}
-                        placeholder="Height"
-                    />
-                </div>
-                <div>
-                    <label>Weight</label>
-                    <input value={this.state.weight}
-                        onChange= {this.handleWeightInput.bind(this)}
-                        placeholder="Weight"
-                    />
-                </div>
-                <div>
-                    <label>Password</label>
-                    <input value={this.state.password}
-                        onChange= {this.handlePasswordInput.bind(this)}
-                        placeholder="Password"
-                    />
-                </div>
-                <button onClick={this.clickSignUp.bind(this)}>Sign Up</button>
             </div>
         )
     }
