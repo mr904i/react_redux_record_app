@@ -34,7 +34,7 @@ class BlogList extends Component {
                         {this.props.user.token && 
                             <Nav.Link className="mr-auto header-navbar-nav-navlink">
                                 <Link to ="/blog" className="header-navbar-nav-navlink__tag">
-                                    List
+                                    Home
                                 </Link>
                             </Nav.Link>
                         }
