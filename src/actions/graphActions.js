@@ -2,7 +2,7 @@ import endpoint from '../endpoint'
 export function getHourSteps(token,date){
     return dispatch => {
         dispatch({type: "FETCH_GRAPH_START"});
-        fetch(`${endpoint}fitbit/hoursteps/filter/?id=&hour_steps=&time=&string_date=${date}`, {
+        fetch(`${endpoint}fitbit/hoursteps/?string_date=${date}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -35,13 +35,13 @@ export function getHourSteps(token,date){
                 dispatch({type: "FETCH_HOURSTEPS_SUCCESS", hour_steps_data: hour_steps_data, hour_steps_sum_data: sumHour })
             } else {
                 //hour_steps_data配列の定義
-                let hour_steps_data = [{'hour': ''}];
+                let hour_steps_data = null;
                 dispatch({type: "FETCH_GRAPH_NODATA", hour_steps_data: hour_steps_data})
             }
         })
         .catch((err) => {
             //データがない場合は既存のstoreを上書き
-            let hour_steps_data = [{'hour': ''}];
+            let hour_steps_data = null;
             dispatch({type: "FETCH_GRAPH_ERROR", error: err, hour_steps_data: hour_steps_data});
         })
     }
