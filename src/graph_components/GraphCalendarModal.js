@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import GraphCalendar from './GraphCalendar'
+import {Button} from 'react-bootstrap'
+
 const customStyles = {
   content : {
     top                   : '50%',
@@ -35,7 +37,7 @@ class GraphCalendarModal extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.openModal}>SELECT DAY</button>
+        <Button variant="secondary" onClick={this.openModal}>SELECT DAY</Button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
