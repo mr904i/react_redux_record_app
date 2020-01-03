@@ -18,7 +18,8 @@ const graphReducer = (state = initState, action) => {
                 ...state,
                 fetching: false,
                 fetched: true,
-                hour_steps_data: action.hour_steps_data
+                hour_steps_data: action.hour_steps_data,
+                hour_steps_sum_data: action.hour_steps_sum_data
             };
         case "FETCH_GRAPH_ERROR":
             return{
