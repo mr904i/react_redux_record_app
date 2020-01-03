@@ -71,11 +71,13 @@ class Signup extends Component {
                             onChange= {this.handleUsernameInput.bind(this)}
                         />
                     </Form.Group>
+
                     <div>
                         <label>Your Birth Day</label>
                         <p>{this.state.date_of_birth&& this.state.date_of_birth.toLocaleDateString()}</p>
                         < BirthDayCalendarModal selectDateOfBirth={this.selectDateOfBirth} date_of_birth = {this.state.date_of_birth}/>
                     </div>
+
                     <Form.Group controlId="Height">
                         <Form.Label>Height</Form.Label>
                         <Form.Control 
@@ -85,6 +87,7 @@ class Signup extends Component {
                             onChange= {this.handleHeightInput.bind(this)}
                         />
                     </Form.Group>
+
                     <Form.Group controlId="Weight">
                         <Form.Label>Weight</Form.Label>
                         <Form.Control 
@@ -94,6 +97,7 @@ class Signup extends Component {
                             onChange= {this.handleWeightInput.bind(this)}
                         />
                     </Form.Group>
+
                     <Form.Group controlId="Password">
                         <Form.Label>Password</Form.Label>
                         <Form.Control 
@@ -103,9 +107,18 @@ class Signup extends Component {
                             onChange= {this.handlePasswordInput.bind(this)}
                         />
                     </Form.Group>
+
                     <Button
                         variant="primary"
                         onClick={this.clickSignUp.bind(this)}
+                        style = {(
+                                    this.state.email.length===0 || 
+                                    this.state.username.length===0 ||
+                                    this.state.date_of_birth.length===0 ||
+                                    this.state.height.length===0 || 
+                                    this.state.weight.length===0 || 
+                                    this.state.password.length===0
+                                ) ? {pointerEvents: 'none'} : {pointerEvents: 'auto'}}
                     >
                         SignUp
                     </Button>
