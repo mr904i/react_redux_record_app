@@ -7,7 +7,7 @@ import BlogShow from './containers/BlogShow';
 import SignUp from './containers/SignUp';
 import Login from './containers/Login';
 import TopPage from './components/TopPage';
-import StepsHour from './graph_components/StepsHour';
+import Graph from './graph_components/Graph';
 import {ConnectedRouter} from 'connected-react-router';
 
 
@@ -22,7 +22,7 @@ class App extends Component {
           <Route path="/blog_new" component={BlogNew} />
           <Route path="/blog_update" component={BlogUpdate} />
           <Route path="/blog_show" component={BlogShow} />
-          <Route path="/test" component={StepsHour} />
+          <Route path="/graph" component={Graph} />
       </ConnectedRouter>  
     );
   }
