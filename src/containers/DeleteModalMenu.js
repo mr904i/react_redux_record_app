@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {articleDelete} from '../actions/blogActions';
 import Modal from 'react-modal';
+import {Button} from 'react-bootstrap'
 
 const customStyles = {
     content : {
@@ -45,7 +46,7 @@ class DeleteModalWindow extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.openModal}>削除</button>
+        <Button variant="danger" onClick={this.openModal} style={{marginRight: "20px"}}>Delete</Button>
         <Modal
             isOpen={this.state.modalIsOpen}
             onAfterOpen={this.afterOpenModal}
