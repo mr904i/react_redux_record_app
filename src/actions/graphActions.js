@@ -23,7 +23,16 @@ export function getHourSteps(token,date){
                     hour_steps_data[i+1] = one_hour_steps
                 }
 
-                dispatch({type: "FETCH_HOURSTEPS_SUCCESS", hour_steps_data: hour_steps_data})
+                //歩数合計値の定義
+                let hourArray =[];
+                for(let i = 0; i < data.length; i++) {
+                    let step = data[i].hour_steps
+                    hourArray.push(step)
+                }
+                //合計値の算出
+                let sumHour = hourArray.reduce((total, data) => {return total + data});
+
+                dispatch({type: "FETCH_HOURSTEPS_SUCCESS", hour_steps_data: hour_steps_data, hour_steps_sum_data: sumHour })
             } else {
                 alert(data.message);
                 dispatch({type: "FETCH_GRAPH_ERROR", error: data.message})

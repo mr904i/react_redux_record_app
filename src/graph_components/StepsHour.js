@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { ComposedChart , CartesianGrid, Legend,Tooltip, Bar, XAxis, YAxis } from 'recharts'
 import {connect} from 'react-redux';
 import {getHourSteps} from '../actions/graphActions';
-import Header from '../containers/Header'
 import GraphCalendarModal from './GraphCalendarModal'
 import '../style/hour_steps.scss'
 
@@ -62,6 +61,7 @@ class StepsHour extends Component {
             <div className="Chart-content">
                 <h1>YOUR STEPS</h1>
                 <p>{this.state.date.toLocaleDateString()}の1時間ごとの歩数です。</p>
+                <p>1日の歩数の合計は{this.props.hour_steps_sum ? this.props.hour_steps_sum : 0 }歩です。</p>
                 <div className="Chart-content__chart">
                     <ComposedChart //グラフ全体のサイズや位置、データを指定。場合によってmarginで上下左右の位置を指定する必要あり。
                         width={800}  //グラフ全体の幅を指定 x
@@ -105,7 +105,8 @@ class StepsHour extends Component {
 const mapStateToProps = (state) => {
     return{
         token: state.auth.token,
-        hour_steps: state.graph.hour_steps_data
+        hour_steps: state.graph.hour_steps_data,
+        hour_steps_sum: state.graph.hour_steps_sum_data
     }
 }
 const mapDispatchToProps = (dispatch) => {
