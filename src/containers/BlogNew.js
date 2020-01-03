@@ -53,6 +53,7 @@ class BlogNew extends Component {
                     <Button
                         variant="primary"
                         onClick={this.clickPost.bind(this)}
+                        style = {(this.state.title.length===0 || this.state.article.length===0) ? {pointerEvents: 'none'} : {pointerEvents: 'auto'}}
                     >
                             Create Article
                     </Button>

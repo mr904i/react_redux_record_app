@@ -54,6 +54,7 @@ class BlogUpdate extends Component {
                     <Button
                         variant="primary"
                         onClick={this.clickUpdate.bind(this)}
+                        style = {(this.state.title.length===0 || this.state.article.length===0) ? {pointerEvents: 'none'} : {pointerEvents: 'auto'}}
                     >
                         Update Article
                     </Button>
