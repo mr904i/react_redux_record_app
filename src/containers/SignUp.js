@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {signup} from '../actions/authActions';
 import BirthDayCalendarModal from './BirthDayCalendarModal';
-import '../style/signup.scss';
 import Header from './Header';
 import {Form, Button} from 'react-bootstrap';
 
