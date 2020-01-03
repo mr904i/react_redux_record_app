@@ -62,7 +62,8 @@ class StepsHour extends Component {
                 <h1>YOUR STEPS</h1>
                 <p>{this.state.date.toLocaleDateString()}の1時間ごとの歩数です。</p>
                 <p>1日の歩数の合計は{this.props.hour_steps_sum ? this.props.hour_steps_sum : 0 }歩です。</p>
-                <div className="Chart-content__chart">
+                {this.props.hour_steps? 
+                    <div className="Chart-content__chart">
                     <ComposedChart //グラフ全体のサイズや位置、データを指定。場合によってmarginで上下左右の位置を指定する必要あり。
                         width={800}  //グラフ全体の幅を指定 x
                         height={280}  //グラフ全体の高さを指定
@@ -93,8 +94,11 @@ class StepsHour extends Component {
                             fill="#ff0000" ////レーダーの中身の色を指定
                         /> */}
                     </ComposedChart>
-                    <GraphCalendarModal onSelectDate={this.onSelectDate} date = {this.state.date} />
                 </div>
+                :
+                <p>データがないためグラフが表示できません</p>
+                }
+                <GraphCalendarModal onSelectDate={this.onSelectDate} date = {this.state.date} />
             </div>
         </div>
       )
