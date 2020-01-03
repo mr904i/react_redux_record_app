@@ -6,6 +6,7 @@ import {Jumbotron, Button, ButtonToolbar} from 'react-bootstrap'
 import DeleteModalWindow from './DeleteModalMenu'
 import Header from './Header'
 import '../style/bloglist.scss'
+import StepsHour from '../graph_components/StepsHour';
 
 
 class BlogList extends Component {
@@ -27,6 +28,7 @@ class BlogList extends Component {
         return(
             <div className="blog-list">
                 <Header/>
+                <StepsHour/>
                 <br />
                 <ul>
                     {
