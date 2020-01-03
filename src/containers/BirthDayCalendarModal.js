@@ -28,7 +28,8 @@ class BirthDayCalendarModal extends Component {
     this.setState({modalIsOpen: true});
   }
   afterOpenModal() {
-    this.subtitle.style.color = '#f00';
+    this.subtitle.style.color = '#6c757d';
+    this.subtitle.style.textAlign = 'center';
   }
   closeModal() {
     this.setState({modalIsOpen: false});
@@ -42,12 +43,11 @@ class BirthDayCalendarModal extends Component {
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           style={customStyles}
-          contentLabel="Example Modal"
+          contentLabel="BirthDay Calendar Modal"
         >
           <h2 ref={subtitle => this.subtitle = subtitle}>SELECT YOUR BIRTH DAY</h2>
           <BirthDayCalendar selectDateOfBirth={this.props.selectDateOfBirth} date_of_birth = {this.props.date_of_birth}/>
-          <div>Opend</div>
-            <button onClick={this.closeModal}>CLOSE</button>
+            <Button variant="secondary" onClick={this.closeModal} style={{marginTop: "5px"}}>SELECT</Button>
         </Modal>
       </div>
     );

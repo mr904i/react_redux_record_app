@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {articleDelete} from '../actions/blogActions';
 import Modal from 'react-modal';
-import {Button} from 'react-bootstrap'
+import {Button, ButtonToolbar} from 'react-bootstrap'
 
 const customStyles = {
     content : {
@@ -54,10 +54,12 @@ class DeleteModalWindow extends React.Component {
             style={customStyles}
             contentLabel="Example Modal"
         >
-            <h2 ref={subtitle => this.subtitle = subtitle}>Delete menu</h2>
-            <div>Do you delete this article？</div>
-            <button onClick={this.clickDelete.bind(this)}>Delete Article</button>
-            <button onClick={this.closeModal}>close</button>
+            <h2 ref={subtitle => this.subtitle = subtitle}>Delete Article</h2>
+            <div>Do you want to delete this article？</div>
+            <ButtonToolbar>
+              <Button variant="danger" onClick={this.clickDelete.bind(this)} style={{marginRight: "15px"}}>Delete Article</Button>
+              <Button variant="secondary" onClick={this.closeModal}>Close</Button>
+            </ButtonToolbar>    
         </Modal>
       </div>
     );

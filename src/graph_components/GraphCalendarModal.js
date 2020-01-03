@@ -29,7 +29,8 @@ class GraphCalendarModal extends Component {
     this.setState({modalIsOpen: true});
   }
   afterOpenModal() {
-    this.subtitle.style.color = '#f00';
+    this.subtitle.style.color = '#6c757d';
+    this.subtitle.style.textAlign = 'center';
   }
   closeModal() {
     this.setState({modalIsOpen: false});
@@ -43,12 +44,11 @@ class GraphCalendarModal extends Component {
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           style={customStyles}
-          contentLabel="Example Modal"
+          contentLabel="Graph Calendar Modal"
         >
           <h2 ref={subtitle => this.subtitle = subtitle}>SELECT DAY</h2>
           <GraphCalendar onSelectDate={this.props.onSelectDate} date = {this.props.date}/>
-          <div>Opend</div>
-            <button onClick={this.closeModal}>CLOSE</button>
+            <Button variant="secondary" onClick={this.closeModal} style={{marginTop: "5px"}}>SELECT</Button>
         </Modal>
       </div>
     );
