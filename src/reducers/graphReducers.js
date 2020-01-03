@@ -21,11 +21,19 @@ const graphReducer = (state = initState, action) => {
                 hour_steps_data: action.hour_steps_data,
                 hour_steps_sum_data: action.hour_steps_sum_data
             };
+        case "FETCH_GRAPH_NODATA":
+            return{
+                ...state,
+                fetching: false,
+                fetched: true,
+                hour_steps_data: action.hour_steps_data,
+            }
         case "FETCH_GRAPH_ERROR":
             return{
                 ...state,
                 fetching: false,
-                error: action.error
+                error: action.error,
+                hour_steps_data: action.hour_steps_data,
             };
         default:
             return state;
