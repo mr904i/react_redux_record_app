@@ -47,7 +47,7 @@ class BlogList extends Component {
                         }
                         {this.props.user.token && 
                             <Nav.Link className="mr-auto header-navbar-nav-navlink">
-                                <Link to = '/test' className="header-navbar-nav-navlink__tag">
+                                <Link to = '/graph' className="header-navbar-nav-navlink__tag">
                                     Show Graph
                                 </Link>
                             </Nav.Link>
