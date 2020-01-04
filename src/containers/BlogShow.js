@@ -49,7 +49,8 @@ class BlogShow extends Component {
                                     state: {
                                         article_id: this.state.id,
                                         article_title: this.state.title,
-                                        article_article: this.state.article
+                                        article_article: this.state.article,
+                                        article_image: this.state.image
                                     }
                                 }}
                                 style={linkstyle}

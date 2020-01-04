@@ -35,7 +35,6 @@ export function article_create(title, article, image, user){
         const token = localStorage.token;
         //現在のユーザー情報idを取得
         const user_id = user.id
-        debugger
         let formData = new FormData()
         formData.append('title',title);
         formData.append('article', article);
@@ -46,11 +45,6 @@ export function article_create(title, article, image, user){
     
             method: 'POST',
             headers: {
-                //'Content-Type': 'application/json',
-                //'Accept': 'application/json, text/plain, */*',
-                //'Content-type':'application/json', 
-                //'Content-Type':'multipart/form-data',
-
                 'Authorization': `JWT ${token}`
             },
             body: formData
@@ -70,7 +64,7 @@ export function article_create(title, article, image, user){
     }
 }
 
-export function article_update(id, title, article, user){
+export function article_update(id, title, article, image, user){
     return dispatch => {
         dispatch({type: "ARTICLE_POST_START"});
         //localstrage からtokenを取得する
@@ -78,21 +72,19 @@ export function article_update(id, title, article, user){
         //現在のユーザー情報idを取得
         const user_id = user.id
 
+        let formData = new FormData()
+        formData.append('title',title);
+        formData.append('article', article);
+        formData.append('image', image);
+        formData.append('user', user_id);
+
         fetch(`${endpoint}blog/${id}/`, {
     
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json',
                 'Authorization': `JWT ${token}`
             },
-            body: JSON.stringify(
-                {
-                    id: id,
-                    title: title,
-                    article: article,
-                    user: user_id,
-                }
-            )
+            body: formData
         })
         .then((res) => res.json())
         .then((data) => {
