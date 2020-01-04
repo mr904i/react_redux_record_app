@@ -67,6 +67,7 @@ class BlogList extends Component {
                                                         state: {
                                                             article_id: article.id,
                                                             article_title: article.title,
+                                                            article_image: article.image,
                                                             article_article: article.article
                                                         }
                                                     }}
