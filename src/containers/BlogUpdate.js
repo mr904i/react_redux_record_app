@@ -33,6 +33,10 @@ class BlogUpdate extends Component {
         this.setState({image_url: image_url})
         this.setState({image: image})
     }
+    handleDleleteImage(){
+        this.setState({image: null})
+        this.setState({image_url: null})
+    }
 
     clickUpdate(){
         this.props.article_update(this.state.id, this.state.title, this.state.article, this.state.image,this.props.user);
@@ -65,6 +69,7 @@ class BlogUpdate extends Component {
                     <Form.Group controlId="exampleForm.ControlInput1">
                         <Form.Label>Image</Form.Label>
                         <input type="file" ref="file" onChange={this.handelChangeFile.bind(this)} />
+                        {this.state.image_url && <Button variant="danger" onClick={this.handleDleleteImage.bind(this)}>Delete Image</Button>}
                         {this.state.image_url && <img src={this.state.image_url} alt="upload_img" />}
                     </Form.Group>
                     <Button
