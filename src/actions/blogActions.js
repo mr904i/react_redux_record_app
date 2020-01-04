@@ -28,28 +28,32 @@ export function fetchArticle(token){
     }
 }
 
-export function article_create(title, article, user){
+export function article_create(title, article, image, user){
     return dispatch => {
         dispatch({type: "ARTICLE_POST_START"});
         //localstrage からtokenを取得する
         const token = localStorage.token;
         //現在のユーザー情報idを取得
         const user_id = user.id
+        debugger
+        let formData = new FormData()
+        formData.append('title',title);
+        formData.append('article', article);
+        formData.append('image', image);
+        formData.append('user', user_id);
 
         fetch(`${endpoint}blog/`, {
     
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                //'Content-Type': 'application/json',
+                //'Accept': 'application/json, text/plain, */*',
+                //'Content-type':'application/json', 
+                //'Content-Type':'multipart/form-data',
+
                 'Authorization': `JWT ${token}`
             },
-            body: JSON.stringify(
-                {
-                    title: title,
-                    article: article,
-                    user: user_id,
-                }
-            )
+            body: formData
         })
         .then((res) => res.json())
         .then((data) => {
@@ -61,7 +65,7 @@ export function article_create(title, article, user){
             }
         })
         .catch((err) => {
-            dispatch({type: "FETCH_ARTICLE_ERROR", errpr: err});
+            dispatch({type: "FETCH_ARTICLE_ERROR", error: err});
         })
     }
 }
