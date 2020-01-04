@@ -38,8 +38,10 @@ export function article_create(title, article, image, user){
         let formData = new FormData()
         formData.append('title',title);
         formData.append('article', article);
-        formData.append('image', image);
         formData.append('user', user_id);
+        if(image){
+            formData.append('image', image);
+        }
 
         fetch(`${endpoint}blog/`, {
     
@@ -75,8 +77,11 @@ export function article_update(id, title, article, image, user){
         let formData = new FormData()
         formData.append('title',title);
         formData.append('article', article);
-        formData.append('image', image);
         formData.append('user', user_id);
+
+        if(image){
+            formData.append('image', image);
+        }
 
         fetch(`${endpoint}blog/${id}/`, {
     

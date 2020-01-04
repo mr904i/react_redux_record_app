@@ -35,7 +35,6 @@ class BlogNew extends Component {
     }
 
     clickPost(){
-        debugger;
         this.props.article_create(this.state.title, this.state.article, this.state.image, this.props.user);
     }
 
