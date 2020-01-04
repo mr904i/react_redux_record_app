@@ -79,17 +79,18 @@ export function article_update(id, title, article, image, user){
         formData.append('article', article);
         formData.append('user', user_id);
 
-        if(image){
+        if(image !==null){
             formData.append('image', image);
+        }else{
+            formData.append('image', ''); 
         }
-
         fetch(`${endpoint}blog/${id}/`, {
     
             method: 'PUT',
             headers: {
                 'Authorization': `JWT ${token}`
             },
-            body: formData
+            body: formData 
         })
         .then((res) => res.json())
         .then((data) => {
