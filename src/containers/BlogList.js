@@ -38,6 +38,7 @@ class BlogList extends Component {
                                     <Jumbotron>
                                         <h1>{article.title}</h1>
                                         <p>{article.article}</p>
+                                        {article.image && <img src={article.image} alt="article_img" />}
                                         <p style={createdatestyle}>{article.created_at}</p>
                                         <ButtonToolbar>
                                             <Button variant="primary" style={btnstyle}>
@@ -47,6 +48,7 @@ class BlogList extends Component {
                                                             article_id: article.id,
                                                             article_title: article.title,
                                                             article_article: article.article,
+                                                            article_image: article.image,
                                                             article_user: article.user,
                                                             article_created_at: article.created_at
                                                         }

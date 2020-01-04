@@ -14,6 +14,7 @@ class BlogShow extends Component {
             id: this.props.location.state.article_id,
             title: this.props.location.state.article_title,
             article: this.props.location.state.article_article,
+            image: this.props.location.state.article_image,
             article_user: this.props.location.state.article_user,
             created_at: this.props.location.state.article_created_at
         }
@@ -34,6 +35,7 @@ class BlogShow extends Component {
                     <div>
                         <h1>{this.state.title}</h1>
                         <p>{this.state.article}</p>
+                        {this.state.image && <img src={this.state.image} alt="article_img" />}
                         <p>{this.state.created_at}</p>
                     </div>
                     <ButtonToolbar>
