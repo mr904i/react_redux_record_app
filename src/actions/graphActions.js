@@ -36,13 +36,15 @@ export function getHourSteps(token,date){
             } else {
                 //hour_steps_data配列の定義
                 let hour_steps_data = null;
-                dispatch({type: "FETCH_GRAPH_NODATA", hour_steps_data: hour_steps_data})
+                let sumHour = null;
+                dispatch({type: "FETCH_GRAPH_NODATA", hour_steps_data: hour_steps_data, hour_steps_sum_data: sumHour})
             }
         })
         .catch((err) => {
             //データがない場合は既存のstoreを上書き
             let hour_steps_data = null;
-            dispatch({type: "FETCH_GRAPH_ERROR", error: err, hour_steps_data: hour_steps_data});
+            let sumHour = null;
+            dispatch({type: "FETCH_GRAPH_ERROR", error: err, hour_steps_data: hour_steps_data, hour_steps_sum_data: sumHour});
         })
     }
 }
