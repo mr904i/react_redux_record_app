@@ -19,7 +19,7 @@ const graphReducer = (state = initState, action) => {
                 fetching: false,
                 fetched: true,
                 hour_steps_data: action.hour_steps_data,
-                hour_steps_sum_data: action.hour_steps_sum_data
+                hour_steps_sum_data: action.hour_steps_sum_data,
             };
         case "FETCH_GRAPH_NODATA":
             return{
@@ -27,6 +27,7 @@ const graphReducer = (state = initState, action) => {
                 fetching: false,
                 fetched: true,
                 hour_steps_data: action.hour_steps_data,
+                hour_steps_sum_data: action.hour_steps_sum_data,
             }
         case "FETCH_GRAPH_ERROR":
             return{
@@ -34,6 +35,7 @@ const graphReducer = (state = initState, action) => {
                 fetching: false,
                 error: action.error,
                 hour_steps_data: action.hour_steps_data,
+                hour_steps_sum_data: action.hour_steps_sum_data,
             };
         default:
             return state;
