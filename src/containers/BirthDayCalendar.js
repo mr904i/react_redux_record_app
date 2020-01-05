@@ -6,13 +6,10 @@ class BirthDayCalendar extends Component {
     date_of_birth: this.props.date_of_birth,
   }
  
-//   onChange = date_of_birth => this.setState({ date_of_birth })
- 
   render() {
     return (
       <div>
         <Calendar
-        //   onChange={this.onChange}
           onChange={this.props.selectDateOfBirth}
           value={this.state.date_of_birth}
         />

@@ -6,8 +6,6 @@ class GraphCalendar extends Component {
     date: this.props.date,
   }
  
-//   onChange = date_of_birth => this.setState({ date_of_birth })
- 
   render() {
     return (
       <div>
