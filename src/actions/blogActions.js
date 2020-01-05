@@ -15,6 +15,7 @@ export function fetchArticle(token){
         .then((data) => {
             if(data){
                 //data配列は逆順でreducerに渡す
+                //記事の並びが安定しないので修正必要かもしれない
                 const reverseData = data.reverse()
                 dispatch({type: "FETCH_ARTICLE_SUCCESS", articles: reverseData})
             } else {
