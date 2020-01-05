@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchArticle} from '../actions/blogActions';
 import {Jumbotron, Button, ButtonToolbar} from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import DeleteModalWindow from './DeleteModalMenu';

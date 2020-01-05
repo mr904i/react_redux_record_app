@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import {Jumbotron, Button, ButtonToolbar} from 'react-bootstrap'
 import DeleteModalWindow from './DeleteModalMenu'
 import Header from './Header'
-import '../style/bloglist.scss'
 import StepsHour from '../graph_components/StepsHour';
 
 
