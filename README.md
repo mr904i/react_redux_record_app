@@ -23,3 +23,8 @@ Python
 Postgresql
 
 ### Example
+## This App can create, update, edit, delte after you sign in or sign up. And this gis file is scroll top page and open article detail page.
+![result](https://user-images.githubusercontent.com/41276533/71822616-9f2fca80-30d8-11ea-8d71-81e5eceb00c9.gif)
+
+## you can choose calendar and get steps data for a day.
+![result1](https://user-images.githubusercontent.com/41276533/71822422-2761a000-30d8-11ea-9c46-9a3067446a8c.gif)
