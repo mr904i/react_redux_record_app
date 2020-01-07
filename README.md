@@ -23,7 +23,7 @@ Python
 Postgresql
 
 ### Example
-## This App can create, update, edit, delte after you sign in or sign up. And this gif file is scrolling top page and opening article detail page.
+## This App can create, update, edit, delete after you sign in or sign up. And this gif file is scrolling top page and opening article detail page.
 ![result](https://user-images.githubusercontent.com/41276533/71822616-9f2fca80-30d8-11ea-8d71-81e5eceb00c9.gif)
 
 ## You can choose calendar and get steps data for 1 day.
